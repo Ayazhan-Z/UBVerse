@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Web Translator | UB International</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Translator</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-
-<body class="translator-main">
-
-  <!-- Navbar -->
+<body>
   <div class="topnav">
     <div class="topnav-content">
       <div class="nav-left">
         <img src="ub.jpg" alt="UB Logo" class="logo">
-        <span class="logo-text">UB International</span>
+        <span class="logo-text">UB International Life</span>
       </div>
       <div class="nav-right">
         <a href="index.html">Home</a>
@@ -26,100 +23,44 @@
       </div>
     </div>
   </div>
-
-  <!-- Translator Container -->
-  <div class="container">
-    <h2>🌐 Web Translator</h2>
-
-    <!-- Language Selection -->
-    <div class="language-select">
-      <select id="source-lang">
-        <option value="en">English</option>
-        <option value="hi">Hindi</option>
-        <option value="bn">Bangla</option>
-        <option value="es">Spanish</option>
-        <option value="fr">French</option>
-        <option value="de">German</option>
-        <option value="it">Italian</option>
-        <option value="zh">Chinese</option>
-      </select>
-
-      <button id="swap-btn" title="Swap languages">⇄</button>
-
-      <select id="target-lang">
-        <option value="bn">Bangla</option>
-        <option value="en" selected>English</option>
-        <option value="hi">Hindi</option>
-        <option value="es">Spanish</option>
-        <option value="fr">French</option>
-        <option value="de">German</option>
-        <option value="it">Italian</option>
-        <option value="zh">Chinese</option>
-      </select>
+  <div class="dashboard-section">
+    <div class="dashboard-header">
+      <h1>Language Translator</h1>
+      <p>Break language barriers with instant translation</p>
     </div>
-
-    <!-- Text Area Section -->
-    <div class="text-area-container">
-      <textarea id="input-text" placeholder="Enter text here..."></textarea>
-      <button id="translate-btn" onclick="translateText()">Translate</button>
-      <textarea id="output-text" placeholder="Translation will appear here..." readonly></textarea>
+    <div class="dashboard-row" style="display:flex; gap:32px; flex-wrap:wrap;">
+      <div style="flex:1; min-width:240px;">
+        <label>From<br>
+        <select id="source-lang">
+          <option value="en">English</option>
+          <option value="es">Spanish</option>
+        </select></label><br>
+        <textarea id="input-text" placeholder="Enter text to translate..."></textarea>
+      </div>
+      <div style="flex:1; min-width:240px;">
+        <label>To<br>
+        <select id="target-lang">
+          <option value="es">Spanish</option>
+          <option value="en">English</option>
+        </select></label><br>
+        <textarea id="output-text" placeholder="Translation will appear here..." readonly></textarea>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:18px;">
+      <button class="btn btn-blue" onclick="translateText()">Translate</button>
+      <button id="swap-btn" class="btn" title="Swap languages">⇄</button>
     </div>
   </div>
-
-  <!-- Translation Script -->
   <script>
-    async function translateText() {
-      const inputText = document.getElementById('input-text').value.trim();
-      const sourceLang = document.getElementById('source-lang').value;
-      const targetLang = document.getElementById('target-lang').value;
-      const outputArea = document.getElementById('output-text');
-      const translateBtn = document.getElementById('translate-btn');
-
-      if (!inputText) {
-        alert("Please enter some text to translate.");
-        return;
-      }
-
-      translateBtn.innerText = "Translating...";
-      translateBtn.disabled = true;
-      outputArea.style.opacity = "0.5";
-
-      const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(inputText)}&langpair=${sourceLang}|${targetLang}`;
-
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-
-        outputArea.style.opacity = "1";
-        if (data.responseData && data.responseData.translatedText) {
-          outputArea.value = data.responseData.translatedText;
-        } else {
-          outputArea.value = "⚠️ Error: Could not translate this text.";
-        }
-      } catch (error) {
-        outputArea.value = "⚠️ Error: Could not connect to translation service.";
-      } finally {
-        translateBtn.innerText = "Translate";
-        translateBtn.disabled = false;
-      }
+    function translateText() {
+      // replace with your translation API logic if needed
+      document.getElementById('output-text').value = "Sample translation here!";
     }
-
-    document.getElementById('swap-btn').addEventListener('click', () => {
-      const source = document.getElementById('source-lang');
-      const target = document.getElementById('target-lang');
-      const temp = source.value;
-      source.value = target.value;
-      target.value = temp;
-
-      const inputText = document.getElementById('input-text');
-      const outputText = document.getElementById('output-text');
-      if (outputText.value) {
-        inputText.value = outputText.value;
-        outputText.value = "";
-      }
-    });
+    document.getElementById('swap-btn').onclick = () => {
+      let s = document.getElementById('source-lang'), t = document.getElementById('target-lang');
+      let tmp = s.value; s.value = t.value; t.value = tmp;
+    };
   </script>
-
 </body>
 </html>
 
