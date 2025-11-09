@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Translator</title>
+  <title>Language Translator</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -23,46 +23,96 @@
       </div>
     </div>
   </div>
+
   <div class="dashboard-section">
     <div class="dashboard-header">
-      <h1>Language Translator</h1>
-      <p>Break language barriers with instant translation</p>
+      <h2>Web Translator</h2>
+      <p>Instantly translate between popular world languages</p>
     </div>
-    <div class="dashboard-row" style="display:flex; gap:32px; flex-wrap:wrap;">
-      <div style="flex:1; min-width:240px;">
-        <label>From<br>
-        <select id="source-lang">
-          <option value="en">English</option>
-          <option value="es">Spanish</option>
-        </select></label><br>
-        <textarea id="input-text" placeholder="Enter text to translate..."></textarea>
-      </div>
-      <div style="flex:1; min-width:240px;">
-        <label>To<br>
-        <select id="target-lang">
-          <option value="es">Spanish</option>
-          <option value="en">English</option>
-        </select></label><br>
-        <textarea id="output-text" placeholder="Translation will appear here..." readonly></textarea>
-      </div>
+    <div class="language-select">
+      <select id="source-lang">
+        <option value="en">English</option>
+        <option value="hi">Hindi हिन्दी</option>
+        <option value="bn">Bangla বাংলা</option>
+        <option value="es">Spanish Español</option>
+        <option value="fr">French Français</option>
+        <option value="de">German Deutsch</option>
+        <option value="it">Italian Italiano</option>
+        <option value="zh">Chinese 中文</option>
+      </select>
+      <button id="swap-btn" title="Swap languages">⇄</button>
+      <select id="target-lang">
+        <option value="en" selected>English</option>
+        <option value="hi">Hindi हिन्दी</option>
+        <option value="bn">Bangla বাংলা</option>
+        <option value="es">Spanish Español</option>
+        <option value="fr">French Français</option>
+        <option value="de">German Deutsch</option>
+        <option value="it">Italian Italiano</option>
+        <option value="zh">Chinese 中文</option>
+      </select>
     </div>
-    <div style="text-align:center;margin-top:18px;">
-      <button class="btn btn-blue" onclick="translateText()">Translate</button>
-      <button id="swap-btn" class="btn" title="Swap languages">⇄</button>
+    <div class="text-area-container">
+      <textarea id="input-text" placeholder="Enter text here..."></textarea>
+      <button onclick="translateText()" id="translate-btn">Translate</button>
+      <textarea id="output-text" placeholder="Translation will appear here..." readonly></textarea>
     </div>
   </div>
+
   <script>
-    function translateText() {
-      // replace with your translation API logic if needed
-      document.getElementById('output-text').value = "Sample translation here!";
+    async function translateText() {
+      const inputText = document.getElementById('input-text').value;
+      const sourceLang = document.getElementById('source-lang').value;
+      const targetLang = document.getElementById('target-lang').value;
+      const outputArea = document.getElementById('output-text');
+      const translateBtn = document.getElementById('translate-btn');
+
+      if (!inputText.trim()) {
+        alert("Please enter some text to translate.");
+        return;
+      }
+
+      translateBtn.innerText = "Translating...";
+      translateBtn.disabled = true;
+      outputArea.style.opacity = "0.5";
+
+      const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(inputText)}&langpair=${sourceLang}|${targetLang}`;
+
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        outputArea.style.opacity = "1";
+        if (data.responseData && data.responseData.translatedText) {
+          outputArea.value = data.responseData.translatedText;
+        } else {
+          outputArea.value = "Error: Could not translate this text.";
+        }
+      } catch (error) {
+        outputArea.value = "Error: Could not connect to translation service.";
+      } finally {
+        translateBtn.innerText = "Translate";
+        translateBtn.disabled = false;
+        outputArea.style.opacity = "1";
+      }
     }
-    document.getElementById('swap-btn').onclick = () => {
-      let s = document.getElementById('source-lang'), t = document.getElementById('target-lang');
-      let tmp = s.value; s.value = t.value; t.value = tmp;
-    };
+
+    document.getElementById('swap-btn').addEventListener('click', () => {
+      const source = document.getElementById('source-lang');
+      const target = document.getElementById('target-lang');
+      const temp = source.value;
+      source.value = target.value;
+      target.value = temp;
+      const inputText = document.getElementById('input-text');
+      const outputText = document.getElementById('output-text');
+      if (outputText.value) {
+        inputText.value = outputText.value;
+        outputText.value = "";
+      }
+    });
   </script>
 </body>
 </html>
+
 
 
 
