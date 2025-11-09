@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Region Matcher</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="topnav">
+    <div class="topnav-content">
+      <div class="nav-left">
+        <img src="ub.jpg" alt="UB Logo" class="logo">
+        <span class="logo-text">UBVerse</span>
+      </div>
+      <div class="nav-right">
+        <a href="index.html">Home</a>
+        <a href="chat.html">Chat</a>
+        <a href="translator.html">Translator</a>
+        <a href="map.html">Map</a>
+        <a href="region.html" class="active">Region Matcher</a>
+        <a href="mood.html">Mood Tracker</a>
+      </div>
+    </div>
+  </div>
+  <div class="dashboard-section">
+    <div class="dashboard-header">
+      <h1>Region Matcher</h1>
+      <p>Register and find students from your country or region</p>
+    </div>
+    <div class="center-form">
+    <form id="regForm">
+      <label>Name:<br><input type="text" id="name" placeholder="Your name" required></label><br>
+      <label>Country:<br><input type="text" id="country" placeholder="Country (e.g. India)" required></label><br>
+      <label>UBIT Email:<br><input type="text" id="ubit" placeholder="Your UBIT email" required></label><br>
+      <label>Phone Number:<br><input type="text" id="phone" placeholder="Your phone number" required></label><br>
+      <button type="submit" class="btn btn-blue">Register</button>
+    </form>
+    <hr style="margin:34px 0;">
+    <div>
+      <label>Search by country:<br><input type="text" id="searchCountry" placeholder="Country name"></label>
+      <button id="searchBtn" class="btn btn-blue">Find Students</button>
+      <div id="results" class="dashboard-list" style="margin-top:16px;"></div>
+    </div>
+  </div>
+  <script>
+    let students = [];
+    document.getElementById('regForm').onsubmit = function(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const country = document.getElementById('country').value.trim().toLowerCase();
+      const ubit = document.getElementById('ubit').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      if (!name || !country || !ubit || !phone) {
+        alert("Please fill all fields");
+        return;
+      }
+      students.push({name, country, ubit, phone});
+      document.getElementById('regForm').reset();
+      alert("Registered! Now search to see your listing.");
+    };
+    document.getElementById('searchBtn').onclick = function(event) {
+      event.preventDefault();
+      const q = document.getElementById('searchCountry').value.trim().toLowerCase();
+      const resultsDiv = document.getElementById('results');
+      resultsDiv.innerHTML = '';
+      const found = students.filter(s => s.country === q);
+      if (found.length === 0) {
+        resultsDiv.innerHTML = "<p>No students found from that country.</p>";
+      } else {
+        found.forEach(s => {
+          const div = document.createElement('div');
+          div.className = 'student';
+          div.innerHTML = `<b>${s.name}</b><br>Email: ${s.ubit}<br>Phone: ${s.phone}`;
+          resultsDiv.appendChild(div);
+        });
+      }
+    };
+  </script>
+</body>
+</html>
