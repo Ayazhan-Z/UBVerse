@@ -273,3 +273,51 @@ textarea, select {
 .center-form hr {
   margin: 28px 0;
 }
+
+.mood-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mood-row {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  justify-content: center;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.mood-row button {
+  background: #343a50;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+  padding: 20px 30px;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  min-width: 120px;
+  min-height: 64px;
+  text-align: center;
+  transition: background 0.18s, color 0.18s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mood-row button.selected,
+.mood-row button:hover {
+  background: #2563eb;
+  color: #fff;
+}
+
+.mood-results {
+  margin-top: 32px;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
