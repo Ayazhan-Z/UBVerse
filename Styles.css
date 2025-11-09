@@ -465,3 +465,37 @@ textarea, select {
   background: #23293c;
 }
 
+.stats-section {
+  width: 100%;
+  padding: 32px 0;
+  background: #20212c;
+  border-radius: 18px;
+  margin: 0 auto 36px auto;
+}
+
+.stats-center {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: center;
+  gap: 56px;
+}
+
+.stats-center > div {
+  color: #fff;
+  font-size: 1.19em;
+  font-weight: 500;
+}
+
+.stats-big {
+  display: block;
+  font-size: 2.05em;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+}
+
+@media (max-width: 800px) {
+  .stats-center { flex-direction: column; gap: 18px; }
+}
+
