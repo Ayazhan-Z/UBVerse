@@ -6,11 +6,28 @@ UBverse is a web-based campus companion application designed specifically for in
 
 ## Recent Changes (November 2025)
 
+**Chat Widget Integration** (November 9, 2025):
+- Added floating chat widget to the homepage (`index.html`) for instant chatbot access
+- Widget features a blue circular button with UB bull mascot (🐂) in bottom-right corner
+- Click the button to open a full-featured chat window without leaving the homepage
+- Includes quick reply chips for common questions (Halal Food, Feeling Lonely, Tipping, Timmies)
+- Smooth animations and responsive design for mobile and desktop
+- Updated "Chat Now" button on homepage to open the widget instead of navigating to separate page
+- Chat functionality now available both as floating widget and dedicated page
+
+**Improved Server Configuration** (November 9, 2025):
+- Enhanced `server.js` with better error handling and cleaner code structure
+- Added flexible port configuration using environment variables with fallback to port 5000
+- Improved API key validation with clear error messages
+- Better static file serving using `path.join()` for cross-platform compatibility
+- Updated `package.json` with proper metadata (author: Afeefur Rahman, MIT license)
+- Added `path` package dependency for better path handling
+
 **Chatbot Integration**: The UB GlobalPal chatbot has been successfully integrated into the UBverse platform:
 - Created a dedicated chat page (`chat.html`) with the chatbot interface
 - Merged chatbot server code into the main `server.js` file, adding the `/api/chat` endpoint
 - Updated navigation across all pages to include the Chat link
-- Installed required dependencies: `@google/generative-ai`, `cors`, and `dotenv`
+- Installed required dependencies: `@google/generative-ai`, `cors`, `dotenv`, and `path`
 - Configured deployment for autoscale hosting
 - The chatbot maintains conversation history on the client side and provides context-aware responses using Google's Gemini 2.0 Flash model
 
