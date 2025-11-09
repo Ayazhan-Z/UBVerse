@@ -336,3 +336,13 @@ img {
   }
 }
 
+@media (max-width: 700px) {
+  .features, .features-grid {
+    flex-direction: column !important;
+    gap: 12px !important;
+    align-items: center;
+  }
+  .hero h1 {
+    font-size: 2rem;
+  }
+}
