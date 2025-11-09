@@ -236,3 +236,24 @@ footer { text-align: center; padding: 24px; color: #6c7faa; font-size: 1em; marg
 
 /* ---- IMAGES ---- */
 img { max-width: 100%; border-radius: 10px; }
+
+
+.language-select,
+.dashboard-row {
+  flex-direction: column !important;
+  gap: 16px !important;
+  align-items: stretch !important;
+}
+.text-area-container {
+  flex-direction: column !important;
+  gap: 14px;
+}
+.dashboard-section, .translator-container  {
+  max-width: 500px !important;
+  margin: 52px auto !important;
+  padding: 28px 18px !important;
+}
+textarea, select {
+  width: 100% !important;
+}
+
