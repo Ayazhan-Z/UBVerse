@@ -76,5 +76,22 @@ body {
 .translator-main button:hover { background: #2265c1; }
 
 /* (Other shared page styling as before)... */
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px 60px 20px;
+  position: relative;
+  z-index: 1;
+}
+.hero-buttons {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
 
 
