@@ -6,6 +6,219 @@
   <title>Homepage</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --ub-blue: #005bbb;
+    }
+
+    .chat-widget-button {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: var(--ub-blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 91, 187, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      z-index: 1000;
+      border: none;
+      font-size: 28px;
+    }
+    .chat-widget-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(0, 91, 187, 0.5);
+    }
+
+    .chat-widget-container {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      width: 380px;
+      height: 550px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      display: none;
+      flex-direction: column;
+      z-index: 1001;
+      overflow: hidden;
+    }
+    .chat-widget-container.open {
+      display: flex;
+      animation: slideUp 0.3s ease;
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .chat-widget-header {
+      background: var(--ub-blue);
+      color: #fff;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .chat-widget-header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .chat-widget-header h3 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .chat-widget-header p {
+      margin: 2px 0 0;
+      font-size: 11px;
+      opacity: 0.85;
+    }
+    .chat-close-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #widget-chat-box {
+      flex: 1;
+      overflow-y: auto;
+      padding: 15px;
+      background-image: radial-gradient(#e1e5ea 1px, transparent 0);
+      background-size: 20px 20px;
+    }
+    .widget-message {
+      max-width: 85%;
+      margin-bottom: 12px;
+      padding: 10px 14px;
+      border-radius: 16px;
+      line-height: 1.4;
+      font-size: 14px;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .widget-message.bot {
+      background: #f1f3f5;
+      color: #212529;
+      border-bottom-left-radius: 4px;
+      margin-right: auto;
+    }
+    .widget-message.user {
+      background: var(--ub-blue);
+      color: #fff;
+      border-bottom-right-radius: 4px;
+      margin-left: auto;
+    }
+
+    .widget-quick-replies {
+      padding: 8px 12px;
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      background: #fff;
+      scrollbar-width: none;
+    }
+    .widget-quick-replies::-webkit-scrollbar { display: none; }
+    .widget-chip {
+      white-space: nowrap;
+      background: #eef2f6;
+      color: var(--ub-blue);
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 1px solid #dee2e6;
+    }
+    .widget-chip:hover {
+      background: var(--ub-blue);
+      color: #fff;
+      border-color: var(--ub-blue);
+    }
+
+    .widget-input-zone {
+      padding: 12px;
+      background: #fff;
+      border-top: 1px solid #eee;
+      display: flex;
+      gap: 8px;
+    }
+    #widget-user-input {
+      flex: 1;
+      padding: 10px 14px;
+      border: 2px solid #eee;
+      border-radius: 24px;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    #widget-user-input:focus {
+      border-color: var(--ub-blue);
+    }
+    #widget-send-btn {
+      background: var(--ub-blue);
+      color: #fff;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s;
+    }
+    #widget-send-btn:hover {
+      transform: scale(1.05);
+    }
+    #widget-send-btn:disabled {
+      background: #ccc;
+      transform: none;
+    }
+
+    .loading-dots::after {
+      content: ' .';
+      animation: dots 1.5s steps(5, end) infinite;
+    }
+    @keyframes dots {
+      0%, 20% { content: ' .'; }
+      40% { content: ' ..'; }
+      60% { content: ' ...'; }
+      80%, 100% { content: ' '; }
+    }
+
+    @media (max-width: 480px) {
+      .chat-widget-container {
+        width: calc(100vw - 20px);
+        height: calc(100vh - 120px);
+        right: 10px;
+        bottom: 90px;
+      }
+      .chat-widget-button {
+        right: 20px;
+        bottom: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Navbar -->
@@ -25,21 +238,22 @@
       </div>
     </div>
   </div>
+
   <!-- Hero -->
   <section class="hero">
     <div class="hero-content">
       <h1>Welcome to UB International Life</h1>
       <p>Your campus companion for translation, discovering places, connecting with students from your region, and tracking campus vibes.</p>
       <div class="hero-buttons">
-        <a href="chat.html" class="btn btn-blue">💬 Chat Now</a>
+        <button onclick="openChatWidget()" class="btn btn-blue">💬 Chat Now</button>
         <a href="translator.html" class="btn btn-blue">Explore Tools</a>
         <a href="region.html" class="btn btn-transparent">Connect Now</a>
       </div>
       <div class="features">
-        <a href="chat.html" class="feature-btn" style="text-decoration: none; color: inherit;">
+        <button onclick="openChatWidget()" class="feature-btn" style="text-decoration: none; color: inherit; border: none; background: transparent; cursor: pointer;">
           <img src="ub.jpg" alt="Chat">
           <span>Chat with GlobalPal</span>
-        </a>
+        </button>
         <a href="translator.html" class="feature-btn" style="text-decoration: none; color: inherit;">
           <img src="translate.jpg" alt="Translator">
           <span>Translator</span>
@@ -59,5 +273,110 @@
       </div>
     </div>
   </section>
+
+  <!-- Chat Widget -->
+  <button class="chat-widget-button" onclick="toggleChatWidget()">🐂</button>
+
+  <div class="chat-widget-container" id="chatWidget">
+    <div class="chat-widget-header">
+      <div class="chat-widget-header-left">
+        <div style="font-size: 24px;">🐂</div>
+        <div>
+          <h3>UB GlobalPal</h3>
+          <p>Ask me anything!</p>
+        </div>
+      </div>
+      <button class="chat-close-btn" onclick="toggleChatWidget()">×</button>
+    </div>
+
+    <div id="widget-chat-box">
+      <div class="widget-message bot">
+        Hey there! I'm GlobalPal 🐂💙.<br><br>
+        I'm here to help you navigate life at UB. Need halal food spots? Feeling homesick? Confused about "The Stampede"? Just ask!
+      </div>
+    </div>
+
+    <div class="widget-quick-replies">
+      <div class="widget-chip" onclick="widgetAsk('Where can I get halal food?')">🌯 Halal</div>
+      <div class="widget-chip" onclick="widgetAsk('I feel really lonely today')">😔 Lonely</div>
+      <div class="widget-chip" onclick="widgetAsk('How much should I tip?')">💵 Tipping</div>
+      <div class="widget-chip" onclick="widgetAsk('What is Tim Hortons?')">☕ Timmies?</div>
+    </div>
+
+    <form class="widget-input-zone" id="widget-chat-form">
+      <input type="text" id="widget-user-input" placeholder="Ask me anything..." autocomplete="off" />
+      <button type="submit" id="widget-send-btn">➤</button>
+    </form>
+  </div>
+
+  <script>
+    const chatWidget = document.getElementById('chatWidget');
+    const widgetChatBox = document.getElementById('widget-chat-box');
+    const widgetUserInput = document.getElementById('widget-user-input');
+    const widgetSendBtn = document.getElementById('widget-send-btn');
+    let widgetHistory = [];
+
+    function toggleChatWidget() {
+      chatWidget.classList.toggle('open');
+      if (chatWidget.classList.contains('open')) {
+        widgetUserInput.focus();
+      }
+    }
+
+    function openChatWidget() {
+      chatWidget.classList.add('open');
+      widgetUserInput.focus();
+    }
+
+    function appendWidgetMessage(text, sender, isLoading = false) {
+      const div = document.createElement('div');
+      div.className = `widget-message ${sender} ${isLoading ? 'loading-dots' : ''}`;
+      div.innerHTML = String(text).replace(/\n/g, '<br>');
+      widgetChatBox.appendChild(div);
+      widgetChatBox.scrollTop = widgetChatBox.scrollHeight;
+      return div;
+    }
+
+    async function widgetAsk(query) {
+      if (!query || !query.trim()) return;
+
+      appendWidgetMessage(query, 'user');
+      widgetUserInput.value = '';
+      widgetSendBtn.disabled = true;
+      const loadingMsg = appendWidgetMessage('Typing', 'bot', true);
+
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: query, history: widgetHistory })
+        });
+
+        if (!res.ok) {
+          throw new Error(`Server returned ${res.status}: ${res.statusText}`);
+        }
+
+        const data = await res.json();
+
+        widgetChatBox.removeChild(loadingMsg);
+        appendWidgetMessage(data.reply || data.error || 'Sorry, something went wrong.', 'bot');
+
+        if (data.reply) {
+          widgetHistory.push({ role: "user", parts: [{ text: query }] });
+          widgetHistory.push({ role: "model", parts: [{ text: data.reply }] });
+        }
+      } catch (err) {
+        console.error('Chat error:', err);
+        widgetChatBox.removeChild(loadingMsg);
+        appendWidgetMessage("⚠️ Connection error! Please try again.", 'bot');
+      }
+      widgetSendBtn.disabled = false;
+    }
+
+    document.getElementById('widget-chat-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      widgetAsk(widgetUserInput.value);
+    });
+  </script>
 </body>
 </html>
