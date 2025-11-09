@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>City Map</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cultural Food & Places Map</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -14,7 +13,7 @@
   <div class="topnav">
     <div class="topnav-content">
       <div class="nav-left">
-        <img src="file:///C:/Users/user/UBiverse/static/1516727792017.jpg" alt="UB Logo" class="logo">
+        <img src="ub.jpg" alt="UB Logo" class="logo">
         <span class="logo-text">UB International</span>
       </div>
       <div class="nav-right">
@@ -30,7 +29,7 @@
   <!-- Page Header -->
   <div class="page-header">
     <h1>Cultural Food & Places Map</h1>
-    <p>Discover authentic restaurants and cultural spots in Buffalo based on your region</p>
+    <p>Discover authentic restaurants and cultural spots in Buffalo based on your region.</p>
 
     <!-- Region Buttons -->
     <div class="region-buttons">
@@ -48,31 +47,29 @@
   <div class="map-container">
     <iframe
       id="map"
-      src="https://www.google.com/maps?q=Buffalo+NY+restaurants&output=embed">
+      src="https://www.google.com/maps?q=Buffalo+NY+restaurants&output=embed"
+      allowfullscreen
+      loading="lazy">
     </iframe>
   </div>
 
-<script>
-  const buttons = document.querySelectorAll('.region-buttons button');
-  const mapIframe = document.getElementById('map');
+  <script>
+    const buttons = document.querySelectorAll('.region-buttons button');
+    const mapIframe = document.getElementById('map');
 
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      // Remove active class from all buttons
-      buttons.forEach(b => b.classList.remove('active'));
-      // Add active class to clicked button
-      button.classList.add('active');
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        button.classList.add('active');
 
-      const region = button.getAttribute('data-region');
-      // Update iframe src to search for region-specific restaurants in Buffalo
-      let query = region === "All" ? "Buffalo NY restaurants" : `${region} restaurants in Buffalo NY`;
-      mapIframe.src = `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
+        const region = button.getAttribute('data-region');
+        const query = region === "All" ? "Buffalo NY restaurants" : `${region} restaurants in Buffalo NY`;
+        mapIframe.src = `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
+      });
     });
-  });
-</script>
+  </script>
 
 </body>
 </html>
-
 
 
