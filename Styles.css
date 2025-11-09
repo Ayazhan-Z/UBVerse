@@ -499,3 +499,8 @@ textarea, select {
   .stats-center { flex-direction: column; gap: 18px; }
 }
 
+.feature-link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
