@@ -20,7 +20,7 @@ body {
   position: relative;
   width: 100%;
   min-height: 420px;
-  background: url('your-hero-image.jpg') no-repeat center center/cover;
+  background: url('bg.jpg') no-repeat center center/cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
