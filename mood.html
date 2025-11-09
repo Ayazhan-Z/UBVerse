@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Campus Mood Tracker</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UB International | Campus Mood Tracker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -30,90 +29,103 @@
   <!-- Page Header -->
   <div class="page-header">
     <h1>❤️ Campus Mood Tracker</h1>
-    <p>Share how you're feeling today and see the collective campus vibe</p>
+    <p>Share how you're feeling today and see the collective campus vibe.</p>
   </div>
 
-  <!-- Mood Selection -->
-  <div class="mood-section">
-    <h2>How are you feeling today?</h2>
-    <div class="mood-buttons">
-      <button data-mood="Amazing">😍<br>Amazing</button>
-      <button data-mood="Good">😊<br>Good</button>
-      <button data-mood="Okay">😐<br>Okay</button>
-      <button data-mood="Not Great">😕<br>Not Great</button>
-      <button data-mood="Tough">😢<br>Tough</button>
-    </div>
-  </div>
+  <!-- Mood Section -->
+  <main class="container">
+    <section class="mood-section">
+      <h2>How are you feeling today?</h2>
+      <div class="mood-buttons">
+        <button data-mood="Amazing">😍<br>Amazing</button>
+        <button data-mood="Good">😊<br>Good</button>
+        <button data-mood="Okay">😐<br>Okay</button>
+        <button data-mood="Not Great">😕<br>Not Great</button>
+        <button data-mood="Tough">😢<br>Tough</button>
+      </div>
+    </section>
 
-  <!-- Mood Summary -->
-  <div class="summary-section">
-    <h3>Campus Mood Today</h3>
-    <p>Overall moods based on submissions:</p>
-    <div class="summary-bar"><div id="amazing-bar" style="width:0%;background-color:#28a745;">0%</div></div>
-    <div class="summary-bar"><div id="good-bar" style="width:0%;background-color:#17a2b8;">0%</div></div>
-    <div class="summary-bar"><div id="okay-bar" style="width:0%;background-color:#ffc107;">0%</div></div>
-    <div class="summary-bar"><div id="notgreat-bar" style="width:0%;background-color:#fd7e14;">0%</div></div>
-    <div class="summary-bar"><div id="tough-bar" style="width:0%;background-color:#dc3545;">0%</div></div>
-    <div class="mood-comment" id="mood-comment"></div>
-  </div>
+    <!-- Mood Summary -->
+    <section class="summary-section">
+      <h3>Campus Mood Today</h3>
+      <p>Overall moods based on submissions:</p>
 
-<script>
-  const buttons = document.querySelectorAll('.mood-buttons button');
+      <div class="summary-bar"><div id="amazing-bar">0%</div></div>
+      <div class="summary-bar"><div id="good-bar">0%</div></div>
+      <div class="summary-bar"><div id="okay-bar">0%</div></div>
+      <div class="summary-bar"><div id="notgreat-bar">0%</div></div>
+      <div class="summary-bar"><div id="tough-bar">0%</div></div>
 
-  // Initialize mood counts from localStorage or default
-  let moodCounts = JSON.parse(localStorage.getItem('campusMood')) || {
-    Amazing: 0,
-    Good: 0,
-    Okay: 0,
-    "Not Great": 0,
-    Tough: 0
-  };
+      <div class="mood-comment" id="mood-comment"></div>
+    </section>
+  </main>
 
-  function updateSummary() {
-    const total = Object.values(moodCounts).reduce((a,b)=>a+b,0) || 1;
-    document.getElementById('amazing-bar').style.width = ((moodCounts.Amazing/total)*100) + '%';
-    document.getElementById('amazing-bar').textContent = Math.round((moodCounts.Amazing/total)*100)+'%';
-    document.getElementById('good-bar').style.width = ((moodCounts.Good/total)*100) + '%';
-    document.getElementById('good-bar').textContent = Math.round((moodCounts.Good/total)*100)+'%';
-    document.getElementById('okay-bar').style.width = ((moodCounts.Okay/total)*100) + '%';
-    document.getElementById('okay-bar').textContent = Math.round((moodCounts.Okay/total)*100)+'%';
-    document.getElementById('notgreat-bar').style.width = ((moodCounts["Not Great"]/total)*100) + '%';
-    document.getElementById('notgreat-bar').textContent = Math.round((moodCounts["Not Great"]/total)*100)+'%';
-    document.getElementById('tough-bar').style.width = ((moodCounts.Tough/total)*100) + '%';
-    document.getElementById('tough-bar').textContent = Math.round((moodCounts.Tough/total)*100)+'%';
+  <footer>
+    <p>© 2025 UB International — All Rights Reserved.</p>
+  </footer>
 
-    // Mood comment
-    let maxMood = Object.keys(moodCounts).reduce((a,b)=>moodCounts[a]>moodCounts[b]?a:b);
-    let comment = '';
-    if(maxMood==='Amazing') comment = "Campus is going amazing! 🎉";
-    else if(maxMood==='Good') comment = "Campus is doing well 🙂";
-    else if(maxMood==='Okay') comment = "Campus feels okay 😐";
-    else if(maxMood==='Not Great') comment = "Some students are struggling 😕";
-    else comment = "Campus is having a tough day 😢";
-    document.getElementById('mood-comment').textContent = comment;
-  }
+  <script>
+    const buttons = document.querySelectorAll('.mood-buttons button');
 
-  updateSummary();
+    // Initialize mood counts from localStorage or default
+    let moodCounts = JSON.parse(localStorage.getItem('campusMood')) || {
+      Amazing: 0,
+      Good: 0,
+      Okay: 0,
+      "Not Great": 0,
+      Tough: 0
+    };
 
-  // Handle mood button click
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      const mood = button.getAttribute('data-mood');
-      moodCounts[mood]++;
-      localStorage.setItem('campusMood', JSON.stringify(moodCounts));
-      updateSummary();
+    function updateSummary() {
+      const total = Object.values(moodCounts).reduce((a, b) => a + b, 0) || 1;
 
-      // Highlight selected button briefly
-      buttons.forEach(b=>b.classList.remove('selected'));
-      button.classList.add('selected');
-      setTimeout(()=>button.classList.remove('selected'), 500);
+      const setBar = (id, count, color) => {
+        const bar = document.getElementById(id);
+        const percent = Math.round((count / total) * 100);
+        bar.style.width = percent + "%";
+        bar.style.backgroundColor = color;
+        bar.textContent = percent + "%";
+      };
+
+      setBar("amazing-bar", moodCounts.Amazing, "#22c55e");
+      setBar("good-bar", moodCounts.Good, "#0ea5e9");
+      setBar("okay-bar", moodCounts.Okay, "#eab308");
+      setBar("notgreat-bar", moodCounts["Not Great"], "#f97316");
+      setBar("tough-bar", moodCounts.Tough, "#ef4444");
+
+      // Mood comment
+      const maxMood = Object.keys(moodCounts).reduce((a, b) =>
+        moodCounts[a] > moodCounts[b] ? a : b
+      );
+      const comments = {
+        Amazing: "Campus is going amazing! 🎉",
+        Good: "Campus is doing well 🙂",
+        Okay: "Campus feels okay 😐",
+        "Not Great": "Some students are struggling 😕",
+        Tough: "Campus is having a tough day 😢"
+      };
+      document.getElementById("mood-comment").textContent = comments[maxMood];
+    }
+
+    updateSummary();
+
+    // Handle mood button click
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+        const mood = button.getAttribute("data-mood");
+        moodCounts[mood]++;
+        localStorage.setItem("campusMood", JSON.stringify(moodCounts));
+        updateSummary();
+
+        // Briefly highlight selected button
+        buttons.forEach(b => b.classList.remove("selected"));
+        button.classList.add("selected");
+        setTimeout(() => button.classList.remove("selected"), 500);
+      });
     });
-  });
-</script>
+  </script>
 
 </body>
 </html>
-
-
 
 
