@@ -1,26 +1,34 @@
 /* === GLOBAL STYLES === */
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: #f8fafc;
-  color: #1e293b;
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: #f8fafc;
+  color: #1e293b;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* === NAVBAR === */
 .topnav {
-  background-color: #1e40af;
-  padding: 12px 0;
+  background-color: #002f56;
   color: white;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  width: 100%;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .topnav-content {
-  width: 90%;
-  margin: auto;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.8rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,273 +50,7 @@ body {
 .logo-text {
   font-weight: 700;
   font-size: 1.1rem;
-}
-
-.nav-right a {
   color: white;
-  text-decoration: none;
-  margin-left: 20px;
-  font-weight: 500;
-  transition: 0.3s;
-}
-
-.nav-right a:hover,
-.nav-right a.active {
-  color: #fbbf24;
-}
-
-/* === PAGE HEADERS === */
-.page-header {
-  text-align: center;
-  margin-top: 40px;
-  padding: 20px;
-}
-
-.page-header h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #1e3a8a;
-}
-
-.page-header p {
-  color: #475569;
-  margin-bottom: 25px;
-  font-size: 1rem;
-}
-
-/* === BUTTONS (Universal Style) === */
-button {
-  font-family: inherit;
-  background-color: #e2e8f0;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 20px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-button:hover {
-  background-color: #cbd5e1;
-}
-
-button.active {
-  background-color: #1d4ed8;
-  color: white;
-}
-
-/* === REGION BUTTONS === */
-.region-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
-
-/* === MAP CONTAINER === */
-.map-container {
-  width: 90%;
-  margin: 40px auto;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-}
-
-iframe {
-  width: 100%;
-  height: 600px;
-  border: 0;
-}
-
-/* === PAGE CONTAINERS (for general content pages) === */
-.container {
-  width: 90%;
-  max-width: 1000px;
-  margin: 40px auto;
-  background: white;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-}
-
-/* === FORMS === */
-input, select, textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 8px;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-family: inherit;
-  background-color: #f9fafb;
-}
-
-input:focus, select:focus, textarea:focus {
-  outline: none;
-  border-color: #2563eb;
-  background-color: white;
-}
-
-/* === FOOTER === */
-footer {
-  text-align: center;
-  padding: 20px;
-  margin-top: 40px;
-  color: #475569;
-  font-size: 0.9rem;
-}
-
-/* === RESPONSIVE DESIGN === */
-@media (max-width: 768px) {
-  .nav-right a {
-    margin-left: 10px;
-    font-size: 0.9rem;
-  }
-
-  .page-header h1 {
-    font-size: 1.5rem;
-  }
-
-  iframe {
-    height: 450px;
-  }
-
-  .container {
-    padding: 20px;
-  }
-}
-
-/* === MOOD TRACKER STYLES === */
-.mood-section {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.mood-section h2 {
-  font-size: 1.4rem;
-  color: #1e3a8a;
-  margin-bottom: 20px;
-}
-
-.mood-buttons {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-.mood-buttons button {
-  width: 90px;
-  height: 90px;
-  background-color: #e2e8f0;
-  border-radius: 16px;
-  font-size: 1.1rem;
-  transition: all 0.2s;
-  border: none;
-  cursor: pointer;
-}
-
-.mood-buttons button:hover {
-  transform: scale(1.05);
-  background-color: #cbd5e1;
-}
-
-.mood-buttons button.selected {
-  background-color: #1d4ed8;
-  color: white;
-  transform: scale(1.1);
-}
-
-/* Mood Summary */
-.summary-section {
-  text-align: center;
-}
-
-.summary-section h3 {
-  font-size: 1.3rem;
-  color: #1e3a8a;
-  margin-bottom: 10px;
-}
-
-.summary-bar {
-  width: 100%;
-  background-color: #f1f5f9;
-  border-radius: 10px;
-  overflow: hidden;
-  margin: 8px 0;
-  height: 25px;
-}
-
-.summary-bar div {
-  height: 25px;
-  color: white;
-  text-align: right;
-  padding-right: 10px;
-  font-size: 0.9rem;
-  line-height: 25px;
-  border-radius: 10px;
-  transition: width 0.5s ease;
-}
-
-.mood-comment {
-  margin-top: 20px;
-  font-weight: 600;
-  color: #334155;
-}
-
-
-/* === Global Styles === */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
-}
-
-body {
-  background-color: #f7f9fb;
-  color: #222;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* === Navbar === */
-.topnav {
-  background-color: #002f56;
-  color: white;
-  width: 100%;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.topnav-content {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0.8rem 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-right: 10px;
-}
-
-.logo-text {
-  font-weight: 600;
-  font-size: 1.1rem;
-  color: white;
-}
-
-.nav-left {
-  display: flex;
-  align-items: center;
 }
 
 .nav-right a {
@@ -329,7 +71,7 @@ body {
   color: white;
 }
 
-/* === Page Header === */
+/* === PAGE HEADER === */
 .page-header {
   text-align: center;
   margin: 2rem auto 1rem auto;
@@ -348,31 +90,103 @@ body {
   font-size: 1rem;
 }
 
-/* === Translator Page === */
+/* === UNIVERSAL CONTAINER === */
+.container {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  max-width: 1000px;
+  width: 90%;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+/* === BUTTONS === */
+button {
+  font-family: inherit;
+  background-color: #e2e8f0;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+button:hover {
+  background-color: #cbd5e1;
+}
+
+button.active {
+  background-color: #1d4ed8;
+  color: white;
+}
+
+/* === FORMS === */
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #f9fafb;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  background-color: white;
+}
+
+/* === MAP SECTION === */
+.map-container {
+  max-width: 1000px;
+  margin: 1rem auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 500px;
+  border: none;
+}
+
+.region-buttons {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.region-buttons button {
+  background-color: #e6f0fa;
+  color: #004a87;
+  margin: 5px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.region-buttons button:hover {
+  background-color: #d0e7fb;
+}
+
+.region-buttons button.active {
+  background-color: #005fb8;
+  color: white;
+}
+
+/* === TRANSLATOR PAGE === */
 .translator-main {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.container {
-  background-color: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  max-width: 700px;
-  width: 90%;
-  margin: 2rem auto;
-  text-align: center;
-}
-
-.container h2 {
-  color: #002f56;
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-
-/* === Language Selectors === */
 .language-select {
   display: flex;
   justify-content: center;
@@ -410,94 +224,7 @@ body {
   background-color: #004a87;
 }
 
-/* === Text Area === */
-.text-area-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-textarea {
-  width: 100%;
-  min-height: 120px;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  font-size: 1rem;
-  resize: vertical;
-  outline: none;
-  transition: 0.2s;
-}
-
-textarea:focus {
-  border-color: #005fb8;
-  box-shadow: 0 0 4px rgba(0,95,184,0.3);
-}
-
-/* === Translate Button === */
-#translate-btn {
-  background-color: #005fb8;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 18px;
-  font-size: 1rem;
-  cursor: pointer;
-  font-weight: 600;
-  transition: 0.25s ease;
-}
-
-#translate-btn:hover {
-  background-color: #004a87;
-}
-
-#translate-btn:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-/* === Map Page === */
-.map-container {
-  max-width: 1000px;
-  margin: 1rem auto;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-}
-
-.map-container iframe {
-  width: 100%;
-  height: 500px;
-  border: none;
-}
-
-.region-buttons {
-  text-align: center;
-  margin-top: 1rem;
-}
-
-.region-buttons button {
-  background-color: #e6f0fa;
-  border: none;
-  color: #004a87;
-  margin: 5px;
-  padding: 8px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: 0.2s;
-}
-
-.region-buttons button:hover {
-  background-color: #d0e7fb;
-}
-
-.region-buttons button.active {
-  background-color: #005fb8;
-  color: white;
-}
-
-/* === Mood Tracker Page === */
+/* === MOOD TRACKER === */
 .mood-section {
   text-align: center;
   margin-top: 1rem;
@@ -505,7 +232,6 @@ textarea:focus {
 
 .mood-buttons button {
   background-color: #e6f0fa;
-  border: none;
   color: #004a87;
   margin: 8px;
   padding: 12px 18px;
@@ -554,8 +280,35 @@ textarea:focus {
   color: #002f56;
 }
 
-/* === Responsive === */
-@media (max-width: 600px) {
+/* === FOOTER === */
+footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: auto;
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+/* === IMAGES === */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+  object-fit: contain; /* keeps the image ratio correct */
+}
+
+/* Hero/Banner Image */
+.hero-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
   .language-select {
     flex-direction: column;
   }
@@ -577,18 +330,9 @@ textarea:focus {
   textarea {
     min-height: 100px;
   }
+
+  iframe {
+    height: 400px;
+  }
 }
-
-
-/* General image styling */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  border-radius: 8px;
-  object-fit: contain; /* keeps the image ratio correct */
-}
-
-
 
