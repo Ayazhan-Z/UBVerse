@@ -378,3 +378,90 @@ textarea, select {
   max-width: 520px;
   text-align: center;
 }
+
+.features-section {
+  max-width: 1150px;
+  margin: 0 auto 48px auto;
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.features-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.features-header h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.features-header p {
+  color: #cdd7eb;
+  font-size: 1.14em;
+}
+
+.features-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 38px;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+}
+
+.feature-card {
+  background: #222537;
+  border-radius: 18px;
+  box-shadow: 0 2px 18px rgba(0,0,0,0.12);
+  padding: 32px 26px 28px 26px;
+  max-width: 285px;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.feature-card img {
+  width: 88px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 16px;
+  border-radius: 12px;
+}
+
+.feature-card h3 {
+  margin: 12px 0 6px 0;
+  font-size: 1.19rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.feature-card p {
+  font-size: 1em;
+  color: #c1c8e1;
+  margin-bottom: 18px;
+}
+
+.feature-card .btn {
+  width: 100%;
+  padding: 12px 0;
+  border-radius: 10px;
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-bottom: 0;
+  margin-top: 4px;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 6px 32px rgba(0,38,110,0.16);
+  background: #23293c;
+}
+
