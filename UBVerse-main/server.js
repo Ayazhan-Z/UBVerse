@@ -3,8 +3,9 @@ const cors = require('cors');
 require('dotenv').config();
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const path = require('path');
+
 const app = express();
-const PORT = 5000;
+const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
@@ -16,7 +17,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.static(__dirname, {
+app.use(express.static(path.join(__dirname), {
   setHeaders: (res, path) => {
     res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
   }
@@ -28,8 +29,10 @@ app.get('/', (req, res) => {
 
 const apiKey = process.env.GEMINI_API_KEY;
 console.log(`🔍 API Key status: ${apiKey ? 'FOUND ✅' : 'MISSING ❌'}`);
+
 if (!apiKey) {
-  console.warn("⚠️  Missing GEMINI_API_KEY in environment variables - chatbot will not work");
+  console.error("❌ Missing GEMINI_API_KEY in environment variables");
+  console.error("⚠️  Chatbot will not work without API key");
 } else {
   console.log('✅ Chatbot API endpoint /api/chat is active');
   const genAI = new GoogleGenerativeAI(apiKey);
@@ -50,7 +53,7 @@ if (!apiKey) {
   });
 }
 
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`✅ Server running on http://0.0.0.0:${PORT}`);
+app.listen(port, '0.0.0.0', () => {
+  console.log(`✅ Server running on http://0.0.0.0:${port}`);
   console.log('UBverse application is ready!');
 });
