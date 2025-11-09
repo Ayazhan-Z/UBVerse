@@ -1,0 +1,21 @@
+{
+  "name": "ub-globalpal-chatbot",
+  "version": "1.0.0",
+  "description": "UB GlobalPal chatbot powered by Gemini AI",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "NODE_ENV=development node server.js"
+  },
+  "keywords": ["chatbot", "express", "gemini", "ai", "university-at-buffalo"],
+  "author": "Afeefur Rahman",
+  "license": "MIT",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "path": "^0.12.7"
+  }
+}
