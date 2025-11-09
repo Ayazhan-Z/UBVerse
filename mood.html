@@ -34,9 +34,10 @@
 
   <!-- Mood Section -->
   <main class="container">
+  <div class="mood-center">
     <section class="mood-section">
       <h2>How are you feeling today?</h2>
-      <div class="mood-buttons">
+      <div class="mood-row">
         <button data-mood="Amazing">😍<br>Amazing</button>
         <button data-mood="Good">😊<br>Good</button>
         <button data-mood="Okay">😐<br>Okay</button>
@@ -44,23 +45,19 @@
         <button data-mood="Tough">😢<br>Tough</button>
       </div>
     </section>
-    <div class="center-form">
-
-    <!-- Mood Summary -->
-    <section class="summary-section">
+    <section class="mood-results">
       <h3>Campus Mood Today</h3>
       <p>Overall moods based on submissions:</p>
-
       <div class="summary-bar"><div id="amazing-bar">0%</div></div>
       <div class="summary-bar"><div id="good-bar">0%</div></div>
       <div class="summary-bar"><div id="okay-bar">0%</div></div>
       <div class="summary-bar"><div id="notgreat-bar">0%</div></div>
       <div class="summary-bar"><div id="tough-bar">0%</div></div>
-
       <div class="mood-comment" id="mood-comment"></div>
     </section>
-    </div>
-  </main>
+  </div>
+</main>
+
 
   <footer>
     <p>© 2025 UB International — All Rights Reserved.</p>
@@ -129,6 +126,7 @@
 
 </body>
 </html>
+
 
 
 
