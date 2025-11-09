@@ -27,10 +27,21 @@
   </div>
 
   <!-- Page Header -->
+<div class="container">
   <div class="page-header">
     <h1>Cultural Food & Places Map</h1>
     <p>Discover authentic restaurants and cultural spots in Buffalo based on your region.</p>
-
+    <div class="region-buttons">
+      <button class="active" data-region="All">All Regions</button>
+      <button data-region="East Asian">East Asian</button>
+      <button data-region="South Asian">South Asian</button>
+      <button data-region="Central Asian">Central Asian</button>
+      <button data-region="Middle Eastern">Middle Eastern</button>
+      <button data-region="Latin American">Latin American</button>
+      <button data-region="African">African</button>
+    </div>
+  </div>
+  
     <!-- Region Buttons -->
     <div class="region-buttons">
       <button class="active" data-region="All">All Regions</button>
@@ -43,14 +54,14 @@
     </div>
   </div>
 
-  <!-- Map -->
+ <!-- Map -->
   <div class="map-container">
-  <iframe
-    id="map"
-    src="https://www.google.com/maps?q=Buffalo+NY+restaurants&output=embed"
-    allowfullscreen
-    loading="lazy">
-  </iframe>
+    <iframe
+      id="map"
+      src="https://www.google.com/maps?q=Buffalo+NY+restaurants&output=embed"
+      allowfullscreen
+      loading="lazy"></iframe>
+  </div>
 </div>
 
 
@@ -72,6 +83,7 @@
 
 </body>
 </html>
+
 
 
 
