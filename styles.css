@@ -1,311 +1,179 @@
-/* =========================
-   UNIVERSAL STYLING
-========================= */
+/* === GLOBAL STYLES === */
 body {
-  background: #181a20;
-  color: #f5f5f5;
-  font-family: 'Inter', Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
+  background-color: #f8fafc;
+  color: #1e293b;
   margin: 0;
+  padding: 0;
 }
 
-/* =========================
-   NAVBAR
-========================= */
+/* === NAVBAR === */
 .topnav {
-  background: #101215;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.17);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 15px 60px;
+  background-color: #1e40af;
+  padding: 12px 0;
+  color: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
 }
 
 .topnav-content {
-  width: 100%;
-  max-width: 1200px;
+  width: 90%;
+  margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .logo {
-  height: 45px;
-  width: 45px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   object-fit: cover;
 }
 
 .logo-text {
-  font-size: 22px;
-  font-weight: 600;
-  color: #fff;
-  letter-spacing: 0.5px;
-}
-
-.nav-right {
-  display: flex;
-  gap: 30px;
+  font-weight: 700;
+  font-size: 1.1rem;
 }
 
 .nav-right a {
-  color: #eee;
+  color: white;
   text-decoration: none;
-  font-size: 17px;
+  margin-left: 20px;
   font-weight: 500;
-  padding: 10px 14px;
-  border-radius: 6px;
-  transition: all 0.25s;
+  transition: 0.3s;
 }
 
-.nav-right a:hover {
-  background-color: #232432;
-  color: #29d7db;
-}
-
+.nav-right a:hover,
 .nav-right a.active {
-  background-color: #2f333d;
-  color: #29d7db;
+  color: #fbbf24;
 }
 
-/* =========================
-   HERO SECTION
-========================= */
-.hero-content {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 60px 20px 80px 20px;
+/* === PAGE HEADERS === */
+.page-header {
   text-align: center;
+  margin-top: 40px;
+  padding: 20px;
 }
 
-.hero-content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-}
-
-.hero-content p {
-  font-size: 1.1rem;
-  color: #c9c9c9;
-  margin-bottom: 40px;
-}
-
-.hero-buttons {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.btn {
-  display: inline-block;
-  padding: 12px 28px;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.25s;
-}
-
-.btn-blue {
-  background: linear-gradient(90deg, #4678ff, #2bd7dd);
-  color: #fff;
-  border: none;
-}
-
-.btn-blue:hover {
-  background: linear-gradient(90deg, #3666c6, #1bb5b3);
-}
-
-.btn-transparent {
-  border: 2px solid #29d7db;
-  background: transparent;
-  color: #29d7db;
-}
-
-.btn-transparent:hover {
-  background: #29d7db;
-  color: #181a20;
-}
-
-/* =========================
-   FEATURE BUTTONS IN HERO
-========================= */
-.features {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-top: 50px;
-  flex-wrap: wrap;
-}
-
-.feature-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #23242b;
-  border-radius: 12px;
-  padding: 18px;
-  width: 120px;
-  transition: transform 0.25s, box-shadow 0.25s;
-  cursor: pointer;
-}
-
-.feature-btn img {
-  width: 60px;
-  height: 60px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
-.feature-btn span {
-  font-size: 0.95rem;
-  color: #e2e2e2;
-}
-
-.feature-btn:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-}
-
-/* =========================
-   STATS SECTION
-========================= */
-.stats-section {
-  background: #23242b;
-  color: #f5f5fa;
-  border-radius: 16px;
-  padding: 50px 20px;
-  margin: 60px auto 0 auto;
-  box-shadow: 0 4px 34px rgba(0,0,0,0.10);
-  text-align: center;
-  max-width: 1000px;
-}
-
-.stats-container {
-  display: flex;
-  justify-content: center;
-  gap: 60px;
-  flex-wrap: wrap;
-}
-
-.stat-box h2 {
-  font-size: 2.2rem;
-  color: #29d7db;
-  margin-bottom: 5px;
-}
-
-.stat-box p {
-  color: #ccc;
-  font-size: 1rem;
-}
-
-/* =========================
-   FEATURES SECTION (TOOLS)
-========================= */
-.features-section {
-  background: #23242b;
-  color: #f5f5fa;
-  border-radius: 16px;
-  padding: 60px 20px;
-  margin: 60px auto;
-  box-shadow: 0 4px 36px rgba(0,0,0,0.14);
-  text-align: center;
-  max-width: 1200px;
-}
-
-.features-header h2 {
+.page-header h1 {
   font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 10px;
+  font-weight: 700;
+  color: #1e3a8a;
 }
 
-.features-header p {
-  color: #bbb;
-  margin-bottom: 40px;
+.page-header p {
+  color: #475569;
+  margin-bottom: 25px;
+  font-size: 1rem;
 }
 
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+/* === BUTTONS (Universal Style) === */
+button {
+  font-family: inherit;
+  background-color: #e2e8f0;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
-.feature-card {
-  background: #181a20;
-  border-radius: 14px;
-  padding: 25px;
-  text-align: center;
-  transition: transform 0.25s, box-shadow 0.25s;
+button:hover {
+  background-color: #cbd5e1;
 }
 
-.feature-card img {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 15px;
+button.active {
+  background-color: #1d4ed8;
+  color: white;
 }
 
-.feature-card h3 {
-  margin: 10px 0;
-  color: #fff;
+/* === REGION BUTTONS === */
+.region-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 }
 
-.feature-card p {
-  color: #ccc;
-  font-size: 0.95rem;
-  margin-bottom: 20px;
-}
-
-.feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-}
-
-/* =========================
-   TRANSLATOR PAGE (white card)
-========================= */
-.translator-main .container {
-  background: #fff !important;
-  color: #232432 !important;
+/* === MAP CONTAINER === */
+.map-container {
+  width: 90%;
+  margin: 40px auto;
   border-radius: 16px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.18);
-  padding: 30px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
-.translator-main textarea,
-.translator-main select {
-  background: #f9f9ff;
-  color: #202022;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+iframe {
+  width: 100%;
+  height: 600px;
+  border: 0;
+}
+
+/* === PAGE CONTAINERS (for general content pages) === */
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+/* === FORMS === */
+input, select, textarea {
   width: 100%;
   padding: 10px;
-  margin-bottom: 12px;
-  font-size: 1rem;
-}
-
-.translator-main textarea:focus,
-.translator-main select:focus {
-  background: #fff;
-  box-shadow: 0 0 0 2px #6ca6ff;
-  border: 1px solid #a7d3ff;
-}
-
-.translator-main button {
-  background: #297fff;
-  color: #fff;
-  border: none;
-  padding: 12px 32px;
-  border-radius: 8px;
-  font-size: 1em;
-  cursor: pointer;
-  box-shadow: 0 2px 10px rgba(41,128,255,0.12);
   margin-top: 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: #f9fafb;
 }
 
-.translator-main button:hover {
-  background: #2265c1;
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  background-color: white;
 }
 
+/* === FOOTER === */
+footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 768px) {
+  .nav-right a {
+    margin-left: 10px;
+    font-size: 0.9rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+
+  iframe {
+    height: 450px;
+  }
+
+  .container {
+    padding: 20px;
+  }
+}
